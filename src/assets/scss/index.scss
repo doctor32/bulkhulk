@@ -1,0 +1,21 @@
+@import 'reset.scss';
+@import 'fonts.scss';
+
+body, html {
+    font-size: 3.127vw;
+    font-family: 'Averta', sans-serif;
+    font-weight: 400;
+}
+
+.container {
+    width: 29rem;
+    margin: 0 auto;
+}
+.title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    color: #252831;
+    width: 24rem;
+}
