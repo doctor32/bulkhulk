@@ -1,46 +1,20 @@
 <template>
     <div class="item__body">
-        <div class="container">
-            <!-- <div class="item__like">
-                <svg @click="favorites = !favorites" width="18" height="18" viewBox="0 0 18 18" :fill="favorites ? '#FF3838' : 'none'" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9.465 15.6075C9.21 15.6975 8.79 15.6975 8.535 15.6075C6.36 14.865 1.5 11.7675 1.5 6.51745C1.5 4.19995 3.3675 2.32495 5.67 2.32495C7.035 2.32495 8.2425 2.98495 9 4.00495C9.7575 2.98495 10.9725 2.32495 12.33 2.32495C14.6325 2.32495 16.5 4.19995 16.5 6.51745C16.5 11.7675 11.64 14.865 9.465 15.6075Z" :stroke="favorites ? 'none' : '#252831'" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div> -->
-            <div class="slider">
-                <svg 
-                    @click="prevSlide"
-                    class="slider__left-arrow" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3.71289 8.29995L6.42956 5.58328C6.75039 5.26245 6.75039 4.73745 6.42956 4.41662L3.71289 1.69995" stroke="#C6C6C6" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <img v-for="img, i in imageSrc" :key="i"
-                :src="img" alt=""
-                class="slider_img"
-                :class="i === 0 ? 'active' : ''"
-                @click="clickOnImg(img, i)"
-                >
-                <svg 
-                    @click="nextSlide"
-                    class="slider__right-arrow" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3.71289 8.29995L6.42956 5.58328C6.75039 5.26245 6.75039 4.73745 6.42956 4.41662L3.71289 1.69995" stroke="#C6C6C6" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-        </div>
-            <div class="item__tabs">
-                    <div class="item__tabs_header">
-                        <p v-for="item, i in tabs" :key="i"
-                        :class="item.active === true ? 'active' : ''"
-                        @click="clickOnTab(item, i)"
-                        >{{item.name}}</p>
-                    </div>
-                    <div class="container" v-touch:swipe.left="swipe()">
-                        <div>
-                            <div>
-                                <h3 class="item__tabs_title">{{tabs[currentTab].title}}</h3>
-                                <p class="item__tabs_subtitle" v-for="item,i in tabs[currentTab].subtitle" :key="i">{{item}}</p>
-                            </div>
-                        </div>
-                    </div>
-            </div>
+        <!-- <div class="item__like">
+            <svg @click="favorites = !favorites" width="18" height="18" viewBox="0 0 18 18" :fill="favorites ? '#FF3838' : 'none'" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.465 15.6075C9.21 15.6975 8.79 15.6975 8.535 15.6075C6.36 14.865 1.5 11.7675 1.5 6.51745C1.5 4.19995 3.3675 2.32495 5.67 2.32495C7.035 2.32495 8.2425 2.98495 9 4.00495C9.7575 2.98495 10.9725 2.32495 12.33 2.32495C14.6325 2.32495 16.5 4.19995 16.5 6.51745C16.5 11.7675 11.64 14.865 9.465 15.6075Z" :stroke="favorites ? 'none' : '#252831'" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div> -->
+        <item-image-slider
+            :images="images"
+            @nextSlide="nextSlide"
+            @prevSlide="prevSlide"
+            @clickOnImg="clickOnImg"
+        />
+
+        <item-description 
+            :item="$store.state.items[this.$route.params.id - 1]"
+        />
             <div class="percents container">
                 <p>0</p>
                 <div class="percents__line_body">
@@ -63,12 +37,12 @@
                         <svg class="percents__item_triangle" width="6" height="3" viewBox="0 0 6 3" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path opacity="0.1" d="M3 3L0 0H6L3 3Z" fill="#009D65"/>
                         </svg>
-                        <div class="percents__item"><p>68$</p></div>
+                        <div class="percents__item"><p>{{$store.state.items[this.$route.params.id - 1].price}}$</p></div>
                     </div>
                 </div>                
             </div>
             <div class="item__footer">
-            <div class="item__price">68 $</div>
+            <div class="item__price">{{$store.state.items[this.$route.params.id - 1].price}}$</div>
                 <button class="item__buy" @click="openForm">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5.625 5.75251V5.02501C5.625 3.33751 6.9825 1.68001 8.67 1.52251C10.68 1.32751 12.375 2.91001 12.375 4.88251V5.91751" stroke="white" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -92,10 +66,13 @@
 <script>
 import 'swiper/css';
 import SubscriptionForm from './subscription-form.vue';
+import ItemImageSlider from './item/item-image-slider.vue';
+import ItemDescription from './item/item-description.vue';
 export default {
-    components: { SubscriptionForm },
+    components: { SubscriptionForm, ItemImageSlider, ItemDescription },
     data() {
         return {
+            itemIndex: 1,
             favorites: false,
             tabs: [
                 {
@@ -127,11 +104,17 @@ export default {
                     active: false
                 },                    
             ],
-            imageSrc: [require('@/assets/img/item1.png'), require('@/assets/img/item2.png'), require('@/assets/img/item3.png'), require('@/assets/img/item4.png'), require('@/assets/img/item5.png')],
+            imageSrc: [require('@/assets/img/items/mattress1.webp'), require('@/assets/img/item2.png'), require('@/assets/img/item3.png'), require('@/assets/img/item4.png'), require('@/assets/img/item5.png')],
             imageIndex: 0,
             currentTab: 0,
             isFormOpened: false
         }
+    },
+    computed: {
+        images() {
+            return this.$store.state.items[this.$route.params.id - 1].images
+        },
+
     },
     methods: {
         clickOnTab(item, i){
@@ -143,18 +126,19 @@ export default {
         },
         nextSlide() {
             console.log('next');
-            this.imageSrc.push(this.imageSrc[0])
-            this.imageSrc.shift()
+            // this.$store.state.items[this.$route.params.id - 1].push(this.$store.state.items[this.$route.params.id - 1].images[0])
+            // this.imageSrc.shift()
+            this.images.push(this.images[0])
+            this.images.shift()
         },
         prevSlide() {
             console.log('prev');
-            this.imageSrc.unshift(this.imageSrc[this.imageSrc.length - 1])
-            this.imageSrc.splice(this.imageSrc.length - 1, 1)
+            this.images.unshift(this.images[this.images.length - 1])
+            this.images.splice(this.images.length - 1, 1)
         },
-        clickOnImg(img, i) {
-            console.log(img, i);
-            this.imageSrc.splice(this.imageSrc.indexOf(img), 1);
-            this.imageSrc.unshift(img)
+        clickOnImg(img) {
+            this.images.splice(this.images.indexOf(img), 1);
+            this.images.unshift(img)
         },
         openForm() {
             this.isFormOpened = true
@@ -165,6 +149,9 @@ export default {
         swipe() {
             console.log('loh');
         }
+    },
+    mounted() {
+        console.log(this.$route);
     }
 }
 </script>
@@ -186,7 +173,7 @@ export default {
     background: red;
 }
 .item__body {
-    padding-top: 7.5rem;
+    padding-top: 1rem;
     position: relative;
 }
 .item__general_img {
@@ -204,90 +191,8 @@ export default {
         height: 1.8rem;
     }
 }
-.slider {
-    margin: 1rem auto 1.2rem auto;
-    width: 27rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    padding-top: 16.8rem;
-    svg {
-        width: 1rem;
-        height: 1rem;
-        &:hover {
-            path {
-                stroke: #009D65;
-            }
-        }
-
-    }
-}
-.slider__left-arrow {
-    transform: rotate(180deg);
-}
-.slider_img {
-    width: 5rem;
-    &.active {
-        position: absolute;
-        height: 15.7rem;
-        width: 16.9rem;
-        top: 0;
-        left: 5rem;
-        right: 0;
-        
-    }
-}
-.slider__right-arrow {
-}
-.item__tabs {
-    
-}
-.item__tabs_header {
-    height: 5rem;
-    display: flex;
-    align-items: center;
-    border-bottom: .1rem solid #F0F1F3;
-    border-top: .1rem solid #F0F1F3;
-    gap: 1.9rem;
-    justify-content: center;
-    .item__tabs_header-slide {
-        display: flex;
-        align-items: center;
-    }
-    p {
-        position: relative;
-        font-weight: 400;
-        font-size: 1.4rem;
-        line-height: 1.7rem;
-        white-space: nowrap;
-        &.active {
-            color: #009D65;
-        }
-    }
-    p.active::before{
-        content: '';
-        background: #009D65;
-        position: absolute;
-        top: 3.4rem;
-        height: .1rem;
-        width: 100%;
-    }
-    
-}
-.item__tabs_title {
-    font-weight: 600;
-    font-size: 1.4rem;
-    line-height: 1.7rem;
-    width: 28rem;
-    padding: 1.2rem 0;
-}
-.item__tabs_subtitle {
-    font-size: 1.2rem;
-    line-height: 1.5rem;
-    padding-bottom: 1.2rem;
-}
 .percents {
+    margin-top: 1rem;
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -383,9 +288,12 @@ export default {
 }
 }
 .item__footer {
+    position: fixed;
+    bottom: 0;
     width: 100%;
     display: flex;
     margin-top: 3rem;
+    z-index: 5;
 }
 .item__price {
     background: #009D65;
