@@ -53,11 +53,11 @@
     .product-wait__dotted-line {
         height: 8.4rem;
         position: absolute;
-        top: 11.8rem;
-        left: 0.4rem;
+        top: 13.4rem;
+        left: 0.7rem;
     }
     .product-wait__dotted-line-2 {
-        top: 22.8rem;
+        top: 25.4rem;
     }
 }
 .product-wait__items {
@@ -83,6 +83,7 @@
     color: #009D65;
 }
 .product-wait__item_text {
+    width: 19rem;
     font-size: 1.2rem;
     line-height: 1.5rem;
 }

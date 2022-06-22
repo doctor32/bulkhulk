@@ -49,7 +49,7 @@
     width: 2.4rem;
 }
 .affordable__item_text {
-    width: 21rem;
+    width: 19rem;
     font-size: 1.2rem;
     line-height: 1.5rem;
 }

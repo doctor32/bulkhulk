@@ -2,23 +2,22 @@
     <header>
         <div class="container header">
             <div class="burger__body" @click="openMenu">
-                <div class="burger"
+                <!-- <div class="burger"
                 :class="menuOpened === true ? 'active' : '' "
-                ></div>
+                ></div> -->
             </div>
             <a href="#" class="header__logo">
                 <img src="@/assets/img/logo.svg" alt="logo img">
             </a>
-            <div class="search">
+            <!-- <div class="search">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8.625 15.75C12.56 15.75 15.75 12.56 15.75 8.625C15.75 4.68997 12.56 1.5 8.625 1.5C4.68997 1.5 1.5 4.68997 1.5 8.625C1.5 12.56 4.68997 15.75 8.625 15.75Z" stroke="#252831" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M16.5 16.5L15 15" stroke="#252831" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-            </div>
+            </div> -->
         </div>
 
-        <div class="menu__body"
-        :class="menuOpened === true ? 'active' : ''">
+        <div class="menu__body" v-if="menuOpened">
           <ul class="menu__list">
             <li> <a href="">About</a> </li>
             <li> <a href="">Market</a> </li>
@@ -62,7 +61,7 @@ header {
     height: 6.1rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 .menu__body {
     z-index: 101;
@@ -122,7 +121,7 @@ header {
 }
 .menu__body {
     position: fixed;
-    top: -100%;
+    top: 0;
     left: 0;
     background: #009D65;
     width: 100%;
@@ -132,9 +131,6 @@ header {
     align-items: center;
     justify-content: center;
     transition: .3s;
-    &.active {
-        top: 0;
-    }
 }
 .menu__list {
     a {
