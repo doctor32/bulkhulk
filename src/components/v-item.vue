@@ -205,14 +205,16 @@ export default {
     svg {
         width: 1rem;
         height: 1rem;
+        &:hover {
+            path {
+                stroke: #009D65;
+            }
+        }
+
     }
 }
 .slider__left-arrow {
     transform: rotate(180deg);
-    path {
-    stroke: #009D65;
-    }
-
 }
 .slider_img {
     width: 5rem;
