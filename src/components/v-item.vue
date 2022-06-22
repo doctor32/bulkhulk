@@ -250,7 +250,6 @@ export default {
         line-height: 1.7rem;
         white-space: nowrap;
         &.active {
-            font-weight: 600;
             color: #009D65;
         }
     }
@@ -374,12 +373,12 @@ export default {
 .item__footer {
     width: 100%;
     display: flex;
-    height: 4rem;
     margin-top: 3rem;
 }
 .item__price {
     background: #009D65;
     width: 18.6rem;
+    height: 4rem;
     display: flex;
     align-items: center;
     padding-left: 1.4rem;
@@ -388,13 +387,15 @@ export default {
     font-size: 1.4rem;
 }
 .item__buy {
+    height: 4rem;
     background: #058657;
     width: 13.4rem;
     font-weight: 600;
     font-size: 1.4rem;
     color: white;
     display: flex;
-    padding: 0 1.4rem;
+    padding-left: 1.4rem;
+    padding-right: 1.4rem;
     align-items: center;
     justify-content: space-between;
     svg {
