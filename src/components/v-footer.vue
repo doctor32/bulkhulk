@@ -12,7 +12,6 @@ Copyright © 2022. All rights reserved.
 
 <style lang="scss" scoped>
 footer {
-    margin-bottom: 3.9rem;
     margin-top: 5rem;
     background: #009D65;
     width: 100%;
