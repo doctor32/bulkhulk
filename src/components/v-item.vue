@@ -36,7 +36,7 @@
                         <div>
                             <div>
                                 <h3 class="item__tabs_title">{{tabs[currentTab].title}}</h3>
-                                <p class="item__tabs_subtitle">{{tabs[currentTab].subtitle}}</p>
+                                <p class="item__tabs_subtitle" v-for="item,i in tabs[currentTab].subtitle" :key="i">{{item}}</p>
                             </div>
                         </div>
                     </div>
@@ -101,19 +101,29 @@ export default {
                 {
                     name: 'About the product',
                     title: '14K Rose Gold Filled Micro Inlaid Diamond Ring for Women Delicate White Topaz Rings Manufacturer',
-                    subtitle: 'They target is to provide high quality products, short lead time, competitive price and professional solution to their customers. They goal is to keep their customer valuable and win good reputation in the market.',
+                    subtitle: ['They target is to provide high quality products, short lead time, competitive price and professional solution to their customers. They goal is to keep their customer valuable and win good reputation in the market. 30 day guarantee.'],
                     active: true
                 },
                 {
                     name: 'Characteristics',
                     title: 'Product characteristics',
-                    subtitle: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia nobis, laborum provident tempore cumque atque, impedit nihil vero laudantium praesentium adipisci cupiditate nam blanditiis tempora repellendus. Vel dignissimos aperiam sint.',
+                    subtitle: ["Model Number: YJ01",
+                            "Material Type: Sterling Gold",
+                            "Gender:  Women's",
+                            "Jewelry Type: Rings",
+                            "Rings Type: Wedding Bands or Rings",
+                            "Style: CLASSIC",
+                            "MOQ: 3 pcs",
+                            "Material: Sterling Silver 925",
+                            "Stone: Moonstone Natural Opal",
+                            "Keyword: Silver Ring",
+                            "Testing: Eco-friendly,nickel and lead free"],
                     active: false
                 },
                 {
                     name: 'Reviews',
                     title: 'Product reviews',
-                    subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, veritatis? Repellat, sequi dolore earum nobis voluptates cupiditate praesentium assumenda! Recusandae voluptates, dolor nostrum quam temporibus similique impedit doloribus ea, reiciendis voluptatem odio consectetur corporis! Ea quaerat eos animi tempora dicta omnis quisquam fugiat minima doloremque perspiciatis, quasi quam, iusto nam explicabo nisi. Corrupti suscipit animi at laboriosam facilis praesentium dicta itaque obcaecati ducimus, ullam expedita quas magnam quaerat? Voluptatum, distinctio debitis beatae esse impedit in enim cumque voluptates accusamus deleniti maxime doloremque natus est ratione minus sunt fugit officia! Cupiditate impedit ullam cumque veniam, asperiores temporibus optio voluptatem corrupti ad!',
+                    subtitle: ['I received this ring as a gift from my husband in addition to the earrings with diamonds from the 585 store, which were donated earlier. When buying earrings, the store provided a discount of 10,000 rubles for the next purchase, and the husband'],
                     active: false
                 },                    
             ],
