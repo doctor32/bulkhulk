@@ -66,7 +66,7 @@
                 this.emailValidation()
                 if (!this.isEmailInvalid) {
                     this.formFilled = true
-                    this.SEND_FORM_DATA('bulkhulk.vercel.app/send_mail/')
+                    this.SEND_FORM_DATA('/send_mail/')
                 }
 
             },
