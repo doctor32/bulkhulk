@@ -54,7 +54,7 @@
                 }
                 console.log(form);
 
-                const response = await fetch('http://bulkhulk.vercel.app/send_mail/', {
+                const response = await fetch('https://bulkhulk.vercel.app/send_mail/', {
                     method: 'POST',
                     body: JSON.stringify(form),
                     headers: {
