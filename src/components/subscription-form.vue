@@ -56,7 +56,7 @@
 
                 const response = await fetch('https://bulkhulk.vercel.app/send_mail/', {
                     method: 'POST',
-                    body: JSON.stringify(form),
+                    body: new FormData(form),
                     headers: {
                         "Content-Type": "application/json; charset=UTF-8",
                     },
