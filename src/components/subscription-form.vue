@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent>
+    <form @submit.prevent ref="myForm">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
         @click="closeForm"
         >
@@ -52,11 +52,10 @@
                     product_name: this.$store.state.items.find(item => item.id == this.$route.params.id).name,
                     product_url: window.location.href
                 }
-                console.log(form);
 
-                const response = await fetch('https://bulkhulk.vercel.app/send_mail/', {
+                const response = await fetch('http://localhost:8080/send_mail/', {
                     method: 'POST',
-                    body: new FormData(form),
+                    body: JSON.stringify(form) ,
                     headers: {
                         "Content-Type": "application/json; charset=UTF-8",
                     },

@@ -20,7 +20,7 @@
                     style="width: 200px;"  
                     class="swiper__slide" 
                     v-for="item, i in tabs" :key="i"
-                    @click="clickOnTab(swiper)"
+                    @click="clickOnTab(item, i)"
                     >
                     <p>{{item.name}}</p>
                 </swiper-slide>
@@ -33,10 +33,10 @@
             <h3 class="item__tabs_title">{{item.name}}</h3>
             <p class="item__tabs_subtitle">{{item.description}}</p>
         </div>
-        <div class="container" v-if="tabIndex === 1">
+        <!-- <div class="container" v-if="tabIndex === 1">
             <p class="item__tabs_subtitle" v-for="subtitle, i in item.subtitle" :key="i">{{subtitle}}</p>
-        </div>
-        <div class="container reviews" v-if="tabIndex === 2">
+        </div> -->
+        <div class="container reviews" v-if="tabIndex === 1">
             <div class="review__body">
                 <div class="review__top">
                     <p class="review__name item__tabs_title">Jenny Lawrence</p>
@@ -98,7 +98,7 @@
                 <p class="item__tabs_subtitle item__tabs_subtitle">Very good product and very cheap. Nice platform which lets you join in on a bulk order with other people or businesses. </p>
             </div>                        
         </div>
-        <div class="container" v-if="tabIndex === 3">
+        <div class="container" v-if="tabIndex === 2">
             <h3 class="item__tabs_title">SEMKO DERI VE TEKSTIL SAN.TIC.LTD.STI</h3>
             <div class="manufacturer__country item__tabs_subtitle">
                 <p>Country: Turkey</p>
@@ -106,7 +106,7 @@
             </div>
             <p class="item__tabs_subtitle ">SMC BY SEMCO founded by title "SMC BY SEMCO DERI VE TEKSTIL SAN. TIC. LTD. STI" in 1986; It has acquired an important place with uncompromised quality since its establishment.SMC BY SEMCO successfully represent our country abroad with 25 years experience in confection. Attach importance to modern, stylish and comfortable design SMC BY SEMCO; "SMC by SEMCO" brands for tenacios men. SMC BY SEMCO products can easily preferred in Daily, at work, events and organizations.With producing jacket, pants and shirts for men; SMC by SEMCO offering a wide range of products for men. SMC by SEMCO pride for making an important contribution to growing Turkish economy by exporting shirts, pants and jackets to primarily Russian Federation, east and middle europe, Middle East, Nort Africa, Caucasian and Balkan countries including from the Europe to America, from Africa to Australia more than 50 countries.</p>
         </div>
-        <div class="container refund" v-if="tabIndex === 4">
+        <div class="container refund" v-if="tabIndex === 3">
             <img src="@/assets/img/security.png" class="refund_img">
             <h3 class="item__tabs_title">Shop with Confidence!</h3>
             <p class="item__tabs_subtitle refund__subtitle">We want you to be completely satisfied with your purchase on Wish. Retirn all products within 30 days of delivery if they are not up to your satisfacrion.</p>
@@ -124,13 +124,13 @@ export default {
             tabIndex: 0,
             tabs: [
                 {
-                    name: 'About the product',
+                    name: 'Item Description',
                     active: true
                 },
-                {
-                    name: 'Characteristics',
-                    active: false
-                },
+                // {
+                //     name: 'Characteristics',
+                //     active: false
+                // },
                 {
                     name: 'Customer Reviews',
                     active: false
@@ -147,8 +147,8 @@ export default {
         }
     },
     methods: {
-        clickOnTab(swiper) {
-            console.log(swiper);
+        clickOnTab(i) {
+            console.log(i);
         },
         swipe(swiper) {
            const swiperObj = Object.assign({}, swiper)

@@ -15,32 +15,43 @@
         <item-description 
             :item="$store.state.items[this.$route.params.id - 1]"
         />
-            <div class="percents container">
-                <p>0</p>
-                <div class="percents__line_body">
-                    <div class="percents__line"></div>
-                    <div class="percents__line"></div>           
-                </div>
-                <p>1000</p>
-
-                <div class="percents__top">
-                    <div class="percents__item_body">
-                        <div class="percents__item"><p>85%</p></div>
-                        <svg class="percents__item_triangle" width="6" height="3" viewBox="0 0 6 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path opacity="0.1" d="M3 3L0 0H6L3 3Z" fill="#009D65"/>
-                        </svg>
-                    </div>
-                </div>
-
-                <div class="percents__bottom">
-                    <div class="percents__item_body">
-                        <svg class="percents__item_triangle" width="6" height="3" viewBox="0 0 6 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path opacity="0.1" d="M3 3L0 0H6L3 3Z" fill="#009D65"/>
-                        </svg>
-                        <div class="percents__item"><p>{{$store.state.items[this.$route.params.id - 1].price}}$</p></div>
-                    </div>
-                </div>                
+        <div class="percents container">
+            <p>0</p>
+            <div class="percents__line_body">
+                <div class="percents__line"></div>
+                <div class="percents__line"></div>           
             </div>
+            <p>1000</p>
+
+            <div class="percents__top">
+                <div class="percents__item_body">
+                    <div class="percents__item"><p>85%</p></div>
+                    <svg class="percents__item_triangle" width="6" height="3" viewBox="0 0 6 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path opacity="0.1" d="M3 3L0 0H6L3 3Z" fill="#009D65"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="percents__bottom">
+                <div class="percents__item_body">
+                    <svg class="percents__item_triangle" width="6" height="3" viewBox="0 0 6 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path opacity="0.1" d="M3 3L0 0H6L3 3Z" fill="#009D65"/>
+                    </svg>
+                    <div class="percents__item"><p>{{$store.state.items[this.$route.params.id - 1].price}}$</p></div>
+                </div>
+            </div>                
+        </div>
+        <div class="delivery__body">
+            <div class="delivery container">
+                <span>
+                    <img src="@/assets/img/delivery.png" alt="">
+                    Delivery time: 
+                </span>
+                <p>5-7 days</p>
+            </div>
+        </div>
+
+
             <div class="item__footer" v-if="!this.$store.state.menuOpened">
             <div class="item__price">{{$store.state.items[this.$route.params.id - 1].price}}$</div>
                 <button class="item__buy" @click="openForm">
@@ -323,6 +334,27 @@ export default {
     svg {
         width: 1.8rem;
         height: 1.8rem;
+    }
+}
+.delivery__body {
+    margin-top: 1rem;
+    border-top: .1rem solid #F0F1F3;
+}
+.delivery {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 0;
+    span {
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+        gap: 1.5rem;
+        img {
+            width: 2.4rem;
+        }
     }
 }
 </style>
