@@ -43,7 +43,7 @@
             }
         },
         methods: {
-            async SEND_FORM_DATA(url) {
+            async SEND_FORM_DATA() {
                 const form = {
                     user_email: this.email,
                     user_phone: this.phone,
@@ -54,9 +54,12 @@
                 }
                 console.log(form);
 
-                const response = await fetch(url, {
+                const response = await fetch('http://bulkhulk.vercel.app/send_mail/', {
                     method: 'POST',
-                    body: JSON.stringify(form)
+                    body: JSON.stringify(form),
+                    headers: {
+                        "Content-Type": "application/json; charset=UTF-8",
+                    },
                 })
 
                 const result = await response.json()
@@ -66,7 +69,7 @@
                 this.emailValidation()
                 if (!this.isEmailInvalid) {
                     this.formFilled = true
-                    this.SEND_FORM_DATA('/send_mail/')
+                    this.SEND_FORM_DATA()
                 }
 
             },
