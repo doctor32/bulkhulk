@@ -3,7 +3,8 @@ import itemslist from './items/items.js'
 
 export default createStore({
   state: {
-    items: itemslist
+    items: itemslist,
+    menuOpened: false
   },
   getters: {
   },

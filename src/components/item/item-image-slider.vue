@@ -1,5 +1,6 @@
 <template>
     <div class="slider">
+        <div class="item__hot">Hot</div>
         <svg 
             @click="prevSlide"
             class="slider__left-arrow" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -55,13 +56,26 @@
         }
 
     }
+    .item__hot{
+        position: absolute;
+        top: 0;
+        width: 4rem;
+        height: 2rem;
+        background: #FF3838;
+        border-radius: .3rem;
+        color: white;
+        font-weight: 600;
+        font-size: 1.2rem;   
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 .slider__left-arrow {
     transform: rotate(180deg);
 }
 .slider_img {
     width: 5rem;
-    object-fit: cover;
     &.active {
         position: absolute;
         height: 15.7rem;

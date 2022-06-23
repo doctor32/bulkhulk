@@ -43,10 +43,30 @@
             }
         },
         methods: {
+            async SEND_FORM_DATA(url) {
+                const form = {
+                    user_email: this.email,
+                    user_phone: this.phone,
+                    user_full_name: this.name,
+                    product_id: this.$route.params.id,
+                    product_name: this.$store.state.items.find(item => item.id == this.$route.params.id).name,
+                    product_url: window.location.href
+                }
+                console.log(form);
+
+                const response = await fetch(url, {
+                    method: 'POST',
+                    body: JSON.stringify(form)
+                })
+
+                const result = await response.json()
+                console.log(result);
+            },
             sendForm() {
                 this.emailValidation()
                 if (!this.isEmailInvalid) {
                     this.formFilled = true
+                    this.SEND_FORM_DATA('bulkhulk.vercel.app/send_mail/')
                 }
 
             },

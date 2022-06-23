@@ -41,7 +41,7 @@
                     </div>
                 </div>                
             </div>
-            <div class="item__footer">
+            <div class="item__footer" v-if="!this.$store.state.menuOpened">
             <div class="item__price">{{$store.state.items[this.$route.params.id - 1].price}}$</div>
                 <button class="item__buy" @click="openForm">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -142,9 +142,11 @@ export default {
         },
         openForm() {
             this.isFormOpened = true
+            document.body.style.overflow = 'hidden' 
         },
         closeForm() {
             this.isFormOpened = false
+            document.body.style.overflow = '' 
         },
         swipe() {
             console.log('loh');

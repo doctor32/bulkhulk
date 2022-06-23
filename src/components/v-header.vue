@@ -1,9 +1,9 @@
 <template>
     <header>
         <div class="container header">
-            <div class="burger__body" @click="openMenu">
+            <div class="burger__body">
                 <div class="burger"
-                :class="menuOpened === true ? 'active' : '' "
+                :class="this.$store.state.menuOpened ? 'active' : '' "
                 ></div>
             </div>
             <a href="#" class="header__logo">
@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div class="menu__body" v-if="menuOpened">
+        <div class="menu__body" v-if="this.$store.state.menuOpened">
           <ul class="menu__list">
             <li> <a href="">About</a> </li>
             <li> <a href="">Market</a> </li>
@@ -28,25 +28,19 @@
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                menuOpened: false
-            }
-        },
-        methods: {
-            openMenu() {
-                this.menuOpened = !this.menuOpened
-
-                if (this.menuOpened) {
-                    document.body.style.overflow = 'hidden'
-                    this.bodyHidden = false
-                } else {
-                    document.body.style.overflow = '' 
-                }
-            }
+export default {
+    data() {
+        return {
+            
+        }
+    },
+    methods: {
+        openMenu() {
+            this.$store.state.menuOpened = !this.$store.state.menuOpened
+            this.$store.state.menuOpened ? document.body.style.overflow = 'hidden' : document.body.style.overflow = '' 
         }
     }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -64,14 +58,11 @@ header {
     align-items: center;
     justify-content: space-between;
 }
-.menu__body {
-    z-index: 101;
-}
 .burger {
     z-index: 101;
-    width: 1.4rem;
+    width: 2rem;
     background: black;
-    height: .1rem;
+    height: .15rem;
     position: relative;
     border-radius: 1rem;
     &.active {
@@ -80,9 +71,9 @@ header {
     &::before {
         content: '';
         position: absolute;
-        top: .4rem;
+        top: .6rem;
         width: 100%;
-        height: .1rem;
+        height: .15rem;
         background-color: black;
         border-radius: 1rem;
         transition: .3s;
@@ -90,9 +81,9 @@ header {
     &::after {
         content: '';
         position: absolute;
-        top: -.4rem;
+        top: -.6rem;
         width: 100%;
-        height: .1rem;
+        height: .15rem;
         background-color: black;
         border-radius: 1rem;
         transition: .3s;
@@ -135,7 +126,7 @@ header {
 }
 .menu__list {
     a {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
     }
     li {
         padding-top: 2rem;
