@@ -44,7 +44,7 @@
 <style lang="scss" scoped>
 .product-wait {
     position: relative;
-    margin-top: 9.5rem;
+    margin-top: 5rem;
     svg {
         width: 1.5rem;
         height: 1.5rem;

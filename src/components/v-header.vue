@@ -10,7 +10,14 @@
                 <img src="@/assets/img/logo.svg" alt="logo img">
             </a>
             <div class="search">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <input type="text" v-show="searchActive"
+                placeholder="Search here"
+                class="search__input"
+                :class="searchActive ? 'active' : ''"
+                >
+                <svg @click="searchActive=!searchActive"
+                    :class="searchActive ? 'active' : ''"
+                    class="search__svg" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8.625 15.75C12.56 15.75 15.75 12.56 15.75 8.625C15.75 4.68997 12.56 1.5 8.625 1.5C4.68997 1.5 1.5 4.68997 1.5 8.625C1.5 12.56 4.68997 15.75 8.625 15.75Z" stroke="#252831" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M16.5 16.5L15 15" stroke="#252831" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -31,7 +38,7 @@
 export default {
     data() {
         return {
-            
+           searchActive: false 
         }
     },
     methods: {
@@ -106,9 +113,37 @@ header {
     }
 }
 .search {
-    svg {
+    position: relative;
+    display: flex;
+    align-items: center;
+    .search__svg  {
         width: 1.8rem;
         height: 1.8rem;
+        &.active {
+            position: absolute;
+            top: .2rem;
+            right: 0.5rem;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+    .search__input {
+        font-size: 1.2rem;
+        width: 0;
+        box-sizing: border-box;
+        padding: 0 2rem 0 0;
+        height: 2.2rem;
+        border: none;
+        border-bottom: .05rem rgb(98, 98, 98) solid;
+        transition: 1s;
+        &.active {
+            width: 13rem;
+            transition: 1s;
+        }
+        &:focus {
+            outline: none;
+            border-bottom: .05rem solid #058657;
+        }
     }
 }
 .menu__body {
