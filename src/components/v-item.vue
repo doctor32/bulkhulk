@@ -263,7 +263,7 @@ export default {
     
     gap: 1rem;
     align-items: center;
-    justify-content: end;
+    padding-left: 3.5rem;
     height: 9rem;
     width: 20.7rem;
     background: #F5F5F5;
