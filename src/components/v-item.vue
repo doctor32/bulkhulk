@@ -294,14 +294,14 @@ export default {
     top: 1.3rem;
     display: flex;
     justify-content: space-between;
-    right: 3.9rem;
+    right: 4.8rem;
 }
 .percents__bottom {
     position: absolute;
     bottom: 1.3rem;
     display: flex;
     justify-content: space-between;
-    right: 3.9rem;
+    right: 4.8rem;
     .percents__item_triangle {
         transform: rotate(180deg);
         path {
