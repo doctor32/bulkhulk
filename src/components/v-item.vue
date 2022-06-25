@@ -5,24 +5,53 @@
                 <path d="M9.465 15.6075C9.21 15.6975 8.79 15.6975 8.535 15.6075C6.36 14.865 1.5 11.7675 1.5 6.51745C1.5 4.19995 3.3675 2.32495 5.67 2.32495C7.035 2.32495 8.2425 2.98495 9 4.00495C9.7575 2.98495 10.9725 2.32495 12.33 2.32495C14.6325 2.32495 16.5 4.19995 16.5 6.51745C16.5 11.7675 11.64 14.865 9.465 15.6075Z" :stroke="favorites ? 'none' : '#252831'" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
         </div> -->
+
         <item-image-slider
             :images="images"
             @nextSlide="nextSlide"
             @prevSlide="prevSlide"
             @clickOnImg="clickOnImg"
         />
+        <div class="item__top_body">
+            <div class="item__top container">
+            <div class="item__top_line"></div>
+                <div class="delivery">
+                    <img src="@/assets/img/delivery.png" alt="">
+                    <p class="delivery__title">Delivery time:</p>  
+                    <p>20-27 days</p>
+                </div>
+                <div class="percents">
+                    <p>0</p>
+                    <div class="percents__line_body">
+                        <div class="percents__line"></div>
+                        <div class="percents__line"></div>           
+                    </div>
+                    <p>1000</p>
+
+                    <div class="percents__top">
+                        <div class="percents__item_body">
+                            <div class="percents__item"><p>85%</p></div>
+                            <svg class="percents__item_triangle" width="6" height="3" viewBox="0 0 6 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path opacity="0.1" d="M3 3L0 0H6L3 3Z" fill="#009D65"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="percents__bottom">
+                        <div class="percents__item_body">
+                            <svg class="percents__item_triangle" width="6" height="3" viewBox="0 0 6 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path opacity="0.1" d="M3 3L0 0H6L3 3Z" fill="#009D65"/>
+                            </svg>
+                            <div class="percents__item"><p>{{$store.state.items[this.$route.params.id - 1].price}}$</p></div>
+                        </div>
+                    </div> 
+
+                </div>
+            </div>
+        </div>
         <item-description 
             :item="$store.state.items[this.$route.params.id - 1]"
         />
-        <div class="delivery__body">
-            <div class="delivery container">
-                <span>
-                    <img src="@/assets/img/delivery.png" alt="">
-                    Delivery time: 
-                </span>
-                <p>20-27 days</p>
-            </div>
-        </div>
+
         <div class="item__footer" v-if="!this.$store.state.menuOpened">
             <div class="item__price">{{$store.state.items[this.$route.params.id - 1].price}}$</div>
             <button class="item__buy" @click="openForm">
@@ -213,25 +242,135 @@ export default {
         height: 1.8rem;
     }
 }
-.delivery__body {
-    margin-top: 1rem;
-    border-top: .1rem solid #F0F1F3;
-}
 .delivery {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2rem 0;
-    span {
-        display: flex;
-        align-items: center;
-        font-weight: 600;
-        font-size: 1.2rem;
-        line-height: 1.5rem;
-        gap: 1.5rem;
+    width: 8.1rem;
+    height: 9rem;
+    flex-direction: column;
+    justify-content: center;
+    background: #F5F5F5;
+    gap: .4rem;
         img {
             width: 2.4rem;
         }
+    .delivery__title {
+        font-weight: 600;
     }
+}
+.percents {
+    position: relative;
+    display: flex;
+    
+    gap: 1rem;
+    align-items: center;
+    justify-content: end;
+    height: 9rem;
+    width: 20.7rem;
+    background: #F5F5F5;
+    p {
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+    }
+}
+.percents__line_body {
+    display: flex;
+}
+.percents__line {
+    height: .6rem;
+    background: #009D65;
+    width: 5rem;
+    &:nth-child(1) {
+        width: 10rem;
+        border-radius: 10rem 0 0 10rem;
+    }
+        &:nth-child(2) {
+        width: 2rem;
+        opacity: .1;
+        border-radius: 0 10rem 10rem 0;
+    }
+}
+.percents__top {
+    position: absolute;
+    top: 1.3rem;
+    display: flex;
+    justify-content: space-between;
+    right: 3.9rem;
+}
+.percents__bottom {
+    position: absolute;
+    bottom: 1.3rem;
+    display: flex;
+    justify-content: space-between;
+    right: 3.9rem;
+    .percents__item_triangle {
+        transform: rotate(180deg);
+        path {
+            opacity: 1;
+        }
+    }
+    .percents__item {
+        background: #009D65;
+        p {
+            color: white;
+        }
+    }
+}
+.percents__item_body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &:nth-child(1) {
+        margin-left: 1rem;
+    }
+}
+.percents__item {
+    background: #E6F5F0;
+    border-radius: 10rem;
+    padding: .2rem .7rem;
+    p {
+        color: #009D65;
+    }
+}
+.percents__item_triangle {
+        width: .6rem;
+        height: .3rem;
+}
+.percents__top {
+    .percents__item_body {
+    &:nth-child(1), &:nth-child(2) {
+        margin-left: .2rem;
+    }
+}
+}
+.percents__bottom {
+    .percents__item_body {
+    &:nth-child(1) {
+        margin-left: .4rem;
+    }
+    &:nth-child(2) {
+        margin-left: .4rem;
+    }
+        &:nth-child(3) {
+        margin-right: .2rem;
+    }
+}
+}
+.item__top {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    .item__top_line {
+        position: absolute;
+        height: 9rem;
+        background: white;
+        width: .2rem;
+        top: 0;
+        left: 9rem;
+        z-index: 2;
+    }
+}
+.item__top_body {
+    background: #F5F5F5;
 }
 </style>

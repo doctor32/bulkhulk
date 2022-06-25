@@ -2,7 +2,7 @@
     <div class="affordable container">
         <img class="affordable-wait__bg" src="@/assets/img/bg-lines2.svg" alt="" />
         <div class="green-line affordable__green-line"></div>
-        <h2 class="title">How are our products the most affordable <span>on the market?</span> </h2>
+        <h2 class="title">How are our products <br> the most affordable <br> <span>on the market?</span> </h2>
         <div class="affordable__items">
             <div class="affordable__item">
                 <div class="affordable__item__img_body"><img src="@/assets/img/affordable1.svg" alt="" class="affordable__img"></div>

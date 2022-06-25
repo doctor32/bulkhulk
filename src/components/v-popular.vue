@@ -58,6 +58,10 @@ import PreviewItem from './item/preview-item.vue';
             this.itemsBeforePagination = this.$store.state.otherItems.slice(0, this.showItems)
         },
         clickOnPreviewItem(id) {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
             this.isAllItemsOpened = false
             this.showItems = 4
             console.log(id);

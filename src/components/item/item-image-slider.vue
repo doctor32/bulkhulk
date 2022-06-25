@@ -6,6 +6,7 @@
             class="slider__left-arrow" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M3.71289 8.29995L6.42956 5.58328C6.75039 5.26245 6.75039 4.73745 6.42956 4.41662L3.71289 1.69995" stroke="#C6C6C6" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
+        
         <img v-for="img, i in images" :key="i"
             :src="img" alt=""
             class="slider_img"

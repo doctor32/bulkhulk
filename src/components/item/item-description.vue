@@ -32,32 +32,7 @@
         <div class="container" v-if="tabIndex === 0">
             <h3 class="item__tabs_title">{{item.name}}</h3>
             <p class="item__tabs_subtitle">{{item.description}}</p>
-                                        <div class="percents container">
-                                <p>0</p>
-                                <div class="percents__line_body">
-                                    <div class="percents__line"></div>
-                                    <div class="percents__line"></div>           
-                                </div>
-                                <p>1000</p>
-
-                                <div class="percents__top">
-                                    <div class="percents__item_body">
-                                        <div class="percents__item"><p>85%</p></div>
-                                        <svg class="percents__item_triangle" width="6" height="3" viewBox="0 0 6 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path opacity="0.1" d="M3 3L0 0H6L3 3Z" fill="#009D65"/>
-                                        </svg>
-                                    </div>
-                                </div>
-
-                                <div class="percents__bottom">
-                                    <div class="percents__item_body">
-                                        <svg class="percents__item_triangle" width="6" height="3" viewBox="0 0 6 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path opacity="0.1" d="M3 3L0 0H6L3 3Z" fill="#009D65"/>
-                                        </svg>
-                                        <div class="percents__item"><p>{{$store.state.items[this.$route.params.id - 1].price}}$</p></div>
-                                    </div>
-                                </div>                
-                            </div>
+                                        
         </div>
         <!-- <div class="container" v-if="tabIndex === 1">
             <p class="item__tabs_subtitle" v-for="subtitle, i in item.subtitle" :key="i">{{subtitle}}</p>
@@ -208,10 +183,13 @@ export default {
         margin-left: 1.5rem;
     }
 }
+.item__tabs {
+    margin-bottom: 2.5rem;
+}
 .item__tabs_header {
     height: 5rem;
     border-bottom: .1rem solid #F0F1F3;
-    border-top: .1rem solid #F0F1F3;
+   // border-top: .1rem solid #F0F1F3;
     p {
         position: relative;
         font-weight: 400;
@@ -305,100 +283,5 @@ export default {
         padding-right: .4rem;
     }
 }
-.percents {
-    margin-top: 1rem;
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 6.8rem;
-    p {
-        font-size: 1.2rem;
-        line-height: 1.5rem;
-    }
-}
-.percents__line_body {
-    display: flex;
-}
-.percents__line {
-    height: .6rem;
-    background: #009D65;
-    width: 5rem;
-    &:nth-child(1) {
-        width: 19.7rem;
-        border-radius: 10rem 0 0 10rem;
-    }
-        &:nth-child(2) {
-        width: 3.9rem;
-        opacity: .1;
-        border-radius: 0 10rem 10rem 0;
-    }
-}
-.percents__top {
-    position: absolute;
-    top: 0;
-    display: flex;
-    justify-content: space-between;
-    left: 19.2rem;
-}
-.percents__bottom {
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    justify-content: space-between;
-    left: 19.2rem;
-    .percents__item_triangle {
-        transform: rotate(180deg);
-        path {
-            opacity: 1;
-        }
-    }
-    .percents__item {
-        background: #009D65;
-        p {
-            color: white;
-        }
-    }
-}
-.percents__item_body {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    &:nth-child(1) {
-        margin-left: 1rem;
-    }
-}
-.percents__item {
-    background: #E6F5F0;
-    border-radius: 10rem;
-    padding: .2rem .7rem;
-    p {
-        color: #009D65;
-    }
-}
-.percents__item_triangle {
-        width: .6rem;
-        height: .3rem;
-}
-.percents__top {
-    .percents__item_body {
-    &:nth-child(1), &:nth-child(2) {
-        margin-left: .2rem;
-    }
-}
-}
-.percents__bottom {
-    .percents__item_body {
-    &:nth-child(1) {
-        margin-left: .4rem;
-    }
-    &:nth-child(2) {
-        margin-left: .4rem;
-    }
-        &:nth-child(3) {
-        margin-right: .2rem;
-    }
-}
-}
+
 </style>

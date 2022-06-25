@@ -1,7 +1,7 @@
 <template>
     <div class="product-wait container">
         <img class="product-wait__bg" src="@/assets/img/bg-lines1.svg" alt="">
-        <h2 class="title">Why do I Have to Wait <span>for my Product?</span> </h2>
+        <h2 class="title">Why do I Have to Wait <br> <span>for my Product?</span> </h2>
         <div class="green-line product-wait__green-line"></div>
         <div class="product-wait__items">
             <div class="product-wait__item">
