@@ -3,16 +3,18 @@
         <div class="green-line popular__green-line"></div>
         <h3 class="title">Popular in your area</h3>
             <div class="popular__items container">
-                <preview-item v-for="item, i in $store.state.otherItems" :key="item.id"
-                    @clickOnPreviewItem="clickOnPreviewItem($store.state.otherItems[i].id)"
-                    :src="$store.state.otherItems[i].images[0]"
-                    :title="$store.state.otherItems[i].name"
-                    :price="$store.state.otherItems[i].price"
-                    :id="$store.state.otherItems[i].id"
+                <preview-item v-for="item, i in itemsBeforePagination" :key="item.id"
+                    @clickOnPreviewItem="clickOnPreviewItem(itemsBeforePagination[i].id)"
+                    :src="itemsBeforePagination[i].images[0]"
+                    :title="itemsBeforePagination[i].name"
+                    :price="itemsBeforePagination[i].price"
+                    :id="itemsBeforePagination[i].id"
                 ></preview-item>
                 <button class="popular__pagination_btn"
-                @click="itemsPagination"
-                >See more</button>
+                    @click="itemsPagination"
+                    v-if="!isAllItemsOpened"
+                    >See more
+                </button>
             </div>
             
     </div>
@@ -37,22 +39,36 @@ import PreviewItem from './item/preview-item.vue';
                     images: ['https://vodo.lviv.ua/wp-content/themes/vodo/img/image-not-found.jpg'],
                     id: null
                 }
-            ]
+            ],
+            isAllItemsOpened: false,
+            showItems: 4,
+            itemsBeforePagination: []
         }
     },
     methods: {
         itemsPagination() {
-            console.log('work');
+            this.showItems += 2
+            this.setArrayBeforePagination()
+            if (this.itemsBeforePagination >= this.$store.state.otherItems) {
+                console.log('work');
+                this.isAllItemsOpened = true
+            }
+        },
+        setArrayBeforePagination() {
+            this.itemsBeforePagination = this.$store.state.otherItems.slice(0, this.showItems)
         },
         clickOnPreviewItem(id) {
+            this.isAllItemsOpened = false
+            this.showItems = 4
             console.log(id);
             this.$store.dispatch('SET_OTHER_ITEMS', id)
             this.$router.push('/' + id)
+            this.setArrayBeforePagination()
         }
     },
     mounted() {
         this.$store.dispatch('SET_OTHER_ITEMS', this.$route.params.id)
-        console.log(this.$store.state.otherItems);
+        this.setArrayBeforePagination()
     }
 }
 </script>

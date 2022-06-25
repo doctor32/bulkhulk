@@ -1,7 +1,7 @@
 <template>
     <div class="preview__item" 
     @click="clickOnPreviewItem">
-        <img :src="src" alt="img">
+        <div class="preview__item_img_body"><img :src="src" alt="img"></div>
         <p class="preview__item_count">54/1000</p>
         <p class="preview__item_title">{{newTitle}}</p>
         <p class="preview__item_price">{{price}} $</p>
@@ -36,6 +36,9 @@
     padding: 1rem;
     display: flex;
     flex-direction: column;
+    .preview__item_img_body {
+        height: 13rem;
+    }
     img {
         width: 100%;
     }
