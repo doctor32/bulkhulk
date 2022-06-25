@@ -2,8 +2,8 @@
     <v-header></v-header>
     <div class="header__margin"></div>
     <router-view></router-view>
-    <how-affordable></how-affordable>
     <product-wait></product-wait>
+    <how-affordable></how-affordable>
     <!-- <div class="menu__margin"></div>
     <v-menu></v-menu> -->
     <v-footer></v-footer>
@@ -16,9 +16,10 @@ import HowAffordable from './components/how-affordable.vue'
 import ProductWait from './components/product-wait.vue'
 import VFooter from './components/v-footer.vue'
   export default {
-  components: { vHeader, HowAffordable, ProductWait, VFooter },
-    
-  }
+    components: { vHeader, HowAffordable, ProductWait, VFooter },
+    mounted() {
+    }
+}
 </script>
 
 <style lang="scss" scoped>

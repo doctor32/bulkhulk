@@ -35,6 +35,9 @@
             Add to cart
             </button>
         </div>
+        <v-popular></v-popular>
+
+
         <div class="modal__body" v-if="isFormOpened">
             <subscription-form
             @close="closeForm"
@@ -48,8 +51,9 @@ import 'swiper/css';
 import SubscriptionForm from './subscription-form.vue';
 import ItemImageSlider from './item/item-image-slider.vue';
 import ItemDescription from './item/item-description.vue';
+import VPopular from './v-popular.vue';
 export default {
-    components: { SubscriptionForm, ItemImageSlider, ItemDescription },
+    components: { SubscriptionForm, ItemImageSlider, ItemDescription, VPopular },
     data() {
         return {
             itemIndex: 1,

@@ -1,36 +1,21 @@
 <template>
     <div class="product-wait container">
-        <img src="@/assets/img/dotted-line.svg" alt="" class="product-wait__dotted-line">
-        <img src="@/assets/img/dotted-line.svg" alt="" class="product-wait__dotted-line product-wait__dotted-line-2">
-        <h2 class="title">Why do I Have to Wait for my Product?</h2>
+        <img class="product-wait__bg" src="@/assets/img/bg-lines1.svg" alt="">
+        <h2 class="title">Why do I Have to Wait <span>for my Product?</span> </h2>
+        <div class="green-line product-wait__green-line"></div>
         <div class="product-wait__items">
             <div class="product-wait__item">
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="6.5" cy="6.5" r="5.5" stroke="#009D65" stroke-width="2"/>
-                </svg>
-                <div class="product-wait__item_right">
-                    <p class="product-wait__item_num">01</p>
-                    <p class="product-wait__item_text">Our manufactures say the bigger the oeders quantity - the less you pay</p>
-                </div>
+                    <img src="@/assets/img/wait-block-1.svg" alt="">
+                    <p class="product-wait__item_text"> <span>Our manufactures say the bigger</span> <br>the oeders quantity - the less you pay</p>
             </div>
             <div class="product-wait__item">
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="6.5" cy="6.5" r="5.5" stroke="#009D65" stroke-width="2"/>
-                </svg>
-                <div class="product-wait__item_right">
-                    <p class="product-wait__item_num">02</p>
-                    <p class="product-wait__item_text">We find tou the other 100-10 000 people that want the same product as you.</p>
-                </div>
+                    <img src="@/assets/img/wait-block-2.svg" alt="">
+                    <p class="product-wait__item_text"> <span>We find tou the other 100-10 000 people</span> that want the same product as you.</p>
             </div>
             <div class="product-wait__item">
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="6.5" cy="6.5" r="5.5" stroke="#009D65" stroke-width="2"/>
-                </svg>
-                <div class="product-wait__item_right">
-                    <p class="product-wait__item_num">03</p>
-                    <p class="product-wait__item_text">Once the order is placed, it will be shippend out within a month.</p>
-                </div>
-            </div>                        
+                    <img src="@/assets/img/wait-block-3.svg" alt="">
+                    <p class="product-wait__item_text"> <span>Once the order is placed, it will be</span> shippend out within a month.</p>
+            </div>                                 
         </div>
     </div>
 </template>
@@ -42,6 +27,16 @@
 </script>
 
 <style lang="scss" scoped>
+.product-wait__bg {
+    position: absolute;
+    top: 7.4rem;
+    width: 32rem;
+    left: -1.5rem;
+    z-index: -1;
+}
+.product-wait__green-line{
+    margin-top: 1.6rem;
+}
 .product-wait {
     position: relative;
     margin-top: 5rem;
@@ -66,24 +61,22 @@
 }
 .product-wait__item {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
     align-items: center;
-    margin-top: 3.3rem;
+    margin-top: 5rem;
+    img {
+        width: 3rem;
+        height: 3rem;
+    }
+    &:nth-child(1) {
+        margin-top: 2.5rem;
+    }
 
 }
-.product-wait__item_right {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-.product-wait__item_num {
-    font-weight: 600;
-    font-size: 3rem;
-    line-height: 3.7rem;
-    color: #009D65;
-}
 .product-wait__item_text {
-    width: 19rem;
+    span {
+        font-weight: 600;
+    }
     font-size: 1.2rem;
     line-height: 1.5rem;
 }
