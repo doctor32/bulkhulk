@@ -6,11 +6,11 @@
         <div class="product-wait__items">
             <div class="product-wait__item">
                     <img src="@/assets/img/wait-block-1.svg" alt="">
-                    <p class="product-wait__item_text"> <span>Our manufactures say the bigger</span> <br>the oeders quantity - the less you pay</p>
+                    <p class="product-wait__item_text"> <span>Our manufactures say the bigger</span> <br>the orders quantity - the less you pay.</p>
             </div>
             <div class="product-wait__item">
                     <img src="@/assets/img/wait-block-2.svg" alt="">
-                    <p class="product-wait__item_text"> <span>We find tou the other 100-10 000 people</span> that want the same product as you.</p>
+                    <p class="product-wait__item_text"> <span>We find to you the other 100-10000 people</span> that want the same product as you.</p>
             </div>
             <div class="product-wait__item">
                     <img src="@/assets/img/wait-block-3.svg" alt="">

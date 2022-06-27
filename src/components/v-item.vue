@@ -18,7 +18,7 @@
                 <div class="delivery">
                     <img src="@/assets/img/delivery.png" alt="">
                     <p class="delivery__title">Delivery time:</p>  
-                    <p>20-27 days</p>
+                    <p>21-30 days</p>
                 </div>
                 <div class="percents">
                     <p>0</p>

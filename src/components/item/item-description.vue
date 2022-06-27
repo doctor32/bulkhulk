@@ -10,28 +10,21 @@
             </p>
         </div> -->
 
-            <swiper class="item__tabs_header swiper__class"
-                :slides-per-view="3"
-                :space-between="0"
-                @slideChange="swipe"
-                @activeIndexChange="swipe(swiper)"
-            >
-                <swiper-slide 
-                    style="width: 200px;"  
+            <div class="item__tabs_header swiper__class">
+                <div
                     class="swiper__slide" 
                     v-for="item, i in tabs" :key="i"
-                    @click="clickOnTab(item, i)"
+                    @click="clickOnTab(i)"
+                    :class="tabIndex === i ? 'swiper-slide-active' : '' "
                     >
                     <p>{{item.name}}</p>
-                </swiper-slide>
-                <swiper-slide class="swiper__slide"></swiper-slide>
-                <swiper-slide class="swiper__slide"></swiper-slide>
+                </div>
             
-            </swiper>
+            </div>
 
         <div class="container" v-if="tabIndex === 0">
             <h3 class="item__tabs_title">{{item.name}}</h3>
-            <p class="item__tabs_subtitle">{{item.description}}</p>
+            <p class="item__tabs_subtitle" v-for="subtitle,i in item.subtitle" :key="i">{{subtitle}}</p>
                                         
         </div>
         <!-- <div class="container" v-if="tabIndex === 1">
@@ -116,9 +109,7 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'swiper/vue'
 export default {
-    components: { Swiper, SwiperSlide },
     props: ['item'],
     data() {
         return {
@@ -149,11 +140,8 @@ export default {
     },
     methods: {
         clickOnTab(i) {
+            this.tabIndex = i
             console.log(i);
-        },
-        swipe(swiper) {
-           const swiperObj = Object.assign({}, swiper)
-           this.tabIndex = swiperObj.activeIndex
         }
     }
 }
@@ -164,29 +152,31 @@ export default {
 .swiper-slide-active{
     p {
         color: #009D65;
+        position: relative;
     }
-    &::before {
+    p::before {
         content: '';
         background: #009D65;
         position: absolute;
-        top: 4.9rem;
+        top: 3.3rem;
         height: .1rem;
-        width: 90%;
+        width: 100%;
     }
 }
-.swiper-slide {
-    width: auto !important;
-    padding-right: 1.3rem;
-    display: flex;
-    align-items: center;
-    &:first-child {
-        margin-left: 1.5rem;
-    }
+.swiper__slide {
 }
 .item__tabs {
     margin-bottom: 2.5rem;
 }
 .item__tabs_header {
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    display: flex;
+    overflow-y: scroll;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 1.5rem;
     height: 5rem;
     border-bottom: .1rem solid #F0F1F3;
    // border-top: .1rem solid #F0F1F3;
@@ -196,12 +186,7 @@ export default {
         font-size: 1.4rem;
         line-height: 1.7rem;
         white-space: nowrap;
-        &.active {
-            color: #009D65;
-        }
     }
-
-    
 }
 .item__tabs_title {
     font-weight: 600;

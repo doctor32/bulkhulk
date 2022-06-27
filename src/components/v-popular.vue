@@ -9,6 +9,7 @@
                     :title="itemsBeforePagination[i].name"
                     :price="itemsBeforePagination[i].price"
                     :id="itemsBeforePagination[i].id"
+                    :count="itemsBeforePagination[i].count"
                 ></preview-item>
                 <button class="popular__pagination_btn"
                     @click="itemsPagination"

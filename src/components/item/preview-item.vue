@@ -2,7 +2,7 @@
     <div class="preview__item" 
     @click="clickOnPreviewItem">
         <div class="preview__item_img_body"><img :src="src" alt="img"></div>
-        <p class="preview__item_count">54/1000</p>
+        <p class="preview__item_count">{{count}}/1000</p>
         <p class="preview__item_title">{{newTitle}}</p>
         <p class="preview__item_price">{{price}} $</p>
     </div>
@@ -10,7 +10,7 @@
 
 <script>
     export default {
-        props: ['title', 'price', 'src', 'id'],
+        props: ['title', 'price', 'src', 'id', 'count'],
         computed: {
             newTitle() {
                 if (this.title.length > 30) {

@@ -1,15 +1,15 @@
 <template>
     <header>
         <div class="container header">
-            <div class="burger__body">
+            <!-- <div class="burger__body">
                 <div class="burger"
                 :class="this.$store.state.menuOpened ? 'active' : '' "
                 ></div>
-            </div>
+            </div> -->
             <a href="#" class="header__logo">
                 <img src="@/assets/img/logo.svg" alt="logo img">
             </a>
-            <div class="search">
+            <!-- <div class="search">
                 <input type="text" v-show="searchActive"
                 placeholder="Search here"
                 class="search__input"
@@ -21,7 +21,7 @@
                     <path d="M8.625 15.75C12.56 15.75 15.75 12.56 15.75 8.625C15.75 4.68997 12.56 1.5 8.625 1.5C4.68997 1.5 1.5 4.68997 1.5 8.625C1.5 12.56 4.68997 15.75 8.625 15.75Z" stroke="#252831" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M16.5 16.5L15 15" stroke="#252831" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-            </div>
+            </div> -->
         </div>
 
         <div class="menu__body" v-if="this.$store.state.menuOpened">
@@ -63,7 +63,7 @@ header {
     height: 6.1rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 .burger {
     z-index: 101;
